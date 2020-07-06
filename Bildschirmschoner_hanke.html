@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+
+<head>
+    <title>Bildschirmschoner</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <h1>Bildschirmschoner</h1>
+    <canvas id="scene" width="500" height="500" style="border: 1px dashed black"></canvas>
+    <script>
+        /** @type {CanvasRenderingContext2D} */
+        let ctx = scene.getContext("2d")
+
+        let sceneWidth = scene.width
+        let sceneHeight = scene.height 
+
+        let fillRandomCircle = (xCenter, yCenter, radius) =>
+            {
+                xCenter = Math.random() * sceneWidth
+                yCenter = Math.random() * sceneHeight
+                radius = Math.random() * 50 + 5
+
+                    let fillCircle = (xCenter, yCenter, radius) => 
+                    {
+                        ctx.beginPath()
+                        ctx.arc(xCenter, yCenter, radius, 0, 2 * Math.PI)
+                        ctx.fill()
+                        ctx.stroke()
+                                
+                        let setRandomFillColor = () =>
+                            {
+                                x = Math.random() * 5 + 1;
+
+                                if(0 <= x < 1)
+                                {
+                                    ctx.fillStyle = "green"
+                                }
+                                else if(1 <= x < 2)
+                                {
+                                    ctx.fillStyle = "orange"
+                                }
+                                else if(2 <= x < 3)
+                                {
+                                    ctx.fillStyle = "aqua"
+                                }
+                                else if(3 <= x < 4)
+                                {
+                                    ctx.fillStyle = "blue"
+                                }
+                                else
+                                {
+                                    ctx.fillStyle = "white"
+                                } 
+                            }
+                                setRandomFillColor()
+                    }
+                    fillCircle(xCenter, yCenter, radius)
+            }
+                setInterval(fillRandomCircle, 10)
+    </script>
+</body>
+
+</html>
